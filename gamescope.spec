@@ -42,7 +42,7 @@ BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  (wlroots-devel >= 0.15.0 with wlroots-devel < 0.16)
-BuildRequires:  (libliftoff-devel >= 0.2.0 with libliftoff-devel < 0.3)
+BuildRequires:  libliftoff-devel
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  stb_image-devel
 BuildRequires:  stb_image_write-devel
