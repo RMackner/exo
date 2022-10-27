@@ -1,5 +1,5 @@
 %global appname MangoHud
-%global imgui_ver       1.88
+%global imgui_ver       1.81
 %global imgui_wrap_ver  1
 
 Name:           mangohud
