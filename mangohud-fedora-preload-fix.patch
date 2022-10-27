@@ -1,0 +1,45 @@
+diff --git a/bin/mangohud.in b/bin/mangohud.in
+index e13da99..364ba3d 100755
+--- a/bin/mangohud.in
++++ b/bin/mangohud.in
+@@ -1,28 +1,27 @@
+ #!/bin/sh
+ 
+ if [ "$#" -eq 0 ]; then
+-	programname=`basename "$0"`
+-	echo "ERROR: No program supplied"
+-	echo
+-	echo "Usage: $programname <program>"
+-	exit 1
++        programname=`basename "$0"`
++        echo "ERROR: No program supplied"
++        echo
++        echo "Usage: $programname <program>"
++        exit 1
+ fi
+ 
+-if [ "$1" = "--dlsym" ]; then
+-	MANGOHUD_DLSYM=1
+-	shift
++if [ "$1" == "--dlsym" ]; then
++        MANGOHUD_DLSYM=1
++        shift
+ fi
+ 
+-MANGOHUD_LIB_NAME="@ld_libdir_mangohud_abs@libMangoHud.so"
++MANGOHUD_LIB_NAME="/usr/lib64/mangohud/libMangoHud.so:/usr/lib/mangohud/libMangoHud.so"
+ 
+-if [ "$MANGOHUD_DLSYM" = "1" ]; then
+-	MANGOHUD_LIB_NAME="@ld_libdir_mangohud_abs@libMangoHud_dlsym.so:${MANGOHUD_LIB_NAME}"
++if [ "$MANGOHUD_DLSYM" -eq 1 ]; then
++	MANGOHUD_LIB_NAME="/usr/lib64/mangohud/libMangoHud_dlsym.so:/usr/lib/mangohud/libMangoHud_dlsym.so:${MANGOHUD_LIB_NAME}"
+ fi
+ 
+ # Preload using the plain filenames of the libs, the dynamic linker will
+ # figure out whether the 32 or 64 bit version should be used, and will search
+ # for it in the correct directory
+ LD_PRELOAD="${LD_PRELOAD}${LD_PRELOAD:+:}${MANGOHUD_LIB_NAME}"
+-LD_LIBRARY_PATH="${LD_LIBRARY_PATH}${LD_LIBRARY_PATH:+:}@ld_libdir_mangohud@"
+ 
+-exec env MANGOHUD=1 LD_LIBRARY_PATH="${LD_LIBRARY_PATH}" LD_PRELOAD="${LD_PRELOAD}" "$@"
++exec env MANGOHUD=1 LD_PRELOAD="${LD_PRELOAD}" "$@"
