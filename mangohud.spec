@@ -9,7 +9,7 @@ Summary:        Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU l
 
 License:        MIT
 URL:            https://github.com/flightlessmango/MangoHud
-Source0:        https://github.com/flightlessmango/MangoHud/archive/refs/heads/master.zip
+Source0:        MangoHud-${version}.tar.gz
 Source1:        https://github.com/ocornut/imgui/archive/v%{imgui_ver}/imgui-%{imgui_ver}.tar.gz
 Source2:        https://wrapdb.mesonbuild.com/v1/projects/imgui/%{imgui_ver}/%{imgui_wrap_ver}/get_zip#/imgui-%{imgui_ver}-%{imgui_wrap_ver}-wrap.zip
 Source3:         mangohud-fedora-preload-fix.patch
@@ -49,9 +49,9 @@ To install GUI front-end:
 
 
 %prep
-%autosetup -n MangoHud-master -p1
-%autosetup -n MangoHud-master -DTa1
-%autosetup -n MangoHud-master -DTa2
+%autosetup -n MangoHud-%{version} -p1
+%autosetup -n MangoHud-%{version} -DTa1
+%autosetup -n MangoHud-%{version} -DTa2
 
 patch -Np1 < %{SOURCE3}
 patch -Np1 < %{SOURCE4}
