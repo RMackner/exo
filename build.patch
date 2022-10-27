@@ -1,0 +1,13 @@
+diff --git a/build.sh b/build.sh
+index 59a7d95..961d905 100755
+--- a/build.sh
++++ b/build.sh
+@@ -62,7 +62,7 @@ dependencies() {
+                 dep_install
+                 break
+             ;;
+-            *fedora*)
++            *fedora*|*nobara*)
+                 MANAGER_QUERY="dnf list installed"
+                 MANAGER_INSTALL="dnf install"
+                 DEPS="{meson,gcc,gcc-c++,libX11-devel,glslang,python3-mako,mesa-libGL-devel,libXNVCtrl-devel,dbus-devel}"
